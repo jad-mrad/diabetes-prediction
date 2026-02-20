@@ -60,6 +60,9 @@ if st.button("🔍 Predict Diabetes", use_container_width=True):
         st.success("✅ Result: Low risk of Diabetes")
         st.metric("Healthy Probability", f"{round(probability[0] * 100, 1)}%")
 
+    # Added disclaimer here so it shows up right after the prediction
+    st.warning("⚠️ **Disclaimer:** I am continuously working to improve the accuracy of this model. Currently, the results are not 100% accurate and this tool should not be used as a substitute for professional medical advice.")
+
     st.subheader("📊 Which factors influenced this prediction?")
     fig, ax = plt.subplots(figsize=(8, 4))
     ax.barh(features, model.feature_importances_, color="steelblue")
@@ -69,4 +72,6 @@ if st.button("🔍 Predict Diabetes", use_container_width=True):
     st.pyplot(fig)
 
 st.markdown("---")
+# Added a permanent note at the bottom of the page
+st.info("💡 **Note:** This is an educational AI engineering project. Predictions may not be entirely correct.")
 st.markdown("🔗 [GitHub](https://github.com/jad-mrad) · Built with Python & Streamlit")
